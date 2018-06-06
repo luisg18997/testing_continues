@@ -5,6 +5,7 @@ pipeline{
         	HOME="."
         	CI = 'true'
    	} 
+	stages{
 	dir('/jmeter/') {
 		stage('build'){
 			steps{
@@ -27,6 +28,7 @@ pipeline{
 			}
 		}
 				
+	}
 	}
 
 	
