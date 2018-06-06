@@ -5,8 +5,8 @@ pipeline{
         	HOME="."
         	CI = 'true'
    	} 
-
-	stages{
+	dir('/jmeter/') {
+		stages{
 		stage('build'){
 			steps{
 				fileExists 'user_group.jmx'
@@ -29,4 +29,10 @@ pipeline{
 		}
 				
 	}
+	
+	
+	
+	}
+
+	
 }
