@@ -9,7 +9,7 @@ pipeline{
 	stages{
 		stage('build'){
 			steps{
-				fileExists 'User_group.jmx'
+				fileExists 'user_group.jmx'
 			}
 		}
 		stage('test running'){
