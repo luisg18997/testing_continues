@@ -3,12 +3,12 @@ pipeline{
 	
 	stages{
 		stage('build'){
-			step{
+			steps{
 				fileExists 'User_group.jmx'
 			}
 		}
 		stage('test running'){
-			step{
+			steps{
 				bzt 'User_group.jmx'
 			}
 		}
