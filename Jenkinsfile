@@ -6,7 +6,7 @@ pipeline{
         	CI = 'true'
    	} 
 	stages{
-	dir('/jmeter/') {
+	dir('jmeter/') {
 		stage('build'){
 			steps{
 				fileExists 'user_group.jmx'
