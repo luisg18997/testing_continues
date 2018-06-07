@@ -1,13 +1,13 @@
 node{
+	checkout scm
 	environment {
         	HOME="."
         	CI = 'true'
    	} 
 	dir('jmeter/') {
-		stage('build'){
-			fileExists 'user_group.jmx'
-		}
+		parallel TEST VOLUMEN :{
 		stage('test running'){
+			sh 'pwd'
 			bzt 'User_group.jmx'
 		}
 		stage('testing database'){
@@ -16,6 +16,10 @@ node{
 		stage('testing recording'){
 			bzt 'login_recording.jmx'
 		}
+		
+		
+		}
+			
 				
 	}
 	
