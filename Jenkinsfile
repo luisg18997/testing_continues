@@ -6,11 +6,16 @@ pipeline {
    	} 
 	stages{
 		stage('checkout'){
-			checkout scm
+			steps{
+				checkout scm
+			}
 		}
 		stage('test'){
 			parallel{
 				stage('testing Volumen'){
+					agent {
+						label "volumen"
+					}
 					steps{
 						dir('jmeter/'){	
 							sh 'pwd'
@@ -19,11 +24,17 @@ pipeline {
 					}
 				}
 				stage('testing database'){
+					agent {
+						label "database"
+					}
 					steps{
 						bzt 'testing_database.jmx'
 					}
 				}
 				stage('testing recording'){
+					agent {
+						label "recording"
+					}
 					steps{
 						bzt 'login_recording.jmx'
 					}
