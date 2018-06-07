@@ -6,7 +6,6 @@ node{
         	CI = 'true'
    	} 
 	dir('jmeter/') {
-		stages{
 		stage('build'){
 			steps{
 				fileExists 'user_group.jmx'
@@ -28,7 +27,6 @@ node{
 			}
 		}
 				
-	}
 	}
 
 	
