@@ -1,21 +1,32 @@
-node{
-	checkout scm
+pipeline {
+	agent any
 	environment {
         	HOME="."
         	CI = 'true'
    	} 
-	dir('jmeter/') {
+	stages{
+		stage('checkout'){
+			checkout scm
+		}
 		stage('test'){
 			parallel{
 				stage('testing Volumen'){
-					sh 'pwd'
-					bzt 'jmeter/User_group.jmx'
+					steps{
+						dir('jmeter/'){	
+							sh 'pwd'
+							bzt 'jmeter/User_group.jmx'
+						}
+					}
 				}
 				stage('testing database'){
-					bzt 'testing_database.jmx'
+					steps{
+						bzt 'testing_database.jmx'
+					}
 				}
 				stage('testing recording'){
-					bzt 'login_recording.jmx'
+					steps{
+						bzt 'login_recording.jmx'
+					}
 				}
 			}
 		}	
