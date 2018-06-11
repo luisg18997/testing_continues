@@ -11,8 +11,8 @@ pipeline {
 			}
 		}
 		stage('test'){
-			parallel{
-				dir('jmeter/'){	
+			dir('jmeter/'){	
+				parallel{
 					stage('testing Volumen'){
 						steps{
 							sh 'pwd'
