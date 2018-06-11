@@ -11,22 +11,24 @@ pipeline {
 			}
 		}
 		stage('test'){
-			dir('jmeter/'){	
-				parallel{
-					stage('testing Volumen'){
-						steps{
-							sh 'pwd'
-							bzt 'User_group.jmx'
+			steps{
+				dir('jmeter/'){	
+					parallel{
+						stage('testing Volumen'){
+							steps{
+								sh 'pwd'
+								bzt 'User_group.jmx'
+							}
 						}
-					}
-					stage('testing database'){
-						steps{
-							bzt 'testing_database.jmx'
+						stage('testing database'){
+							steps{
+								bzt 'testing_database.jmx'
+							}
 						}
-					}
-					stage('testing recording'){
-						steps{
-							bzt 'login_recording.jmx'
+						stage('testing recording'){
+							steps{
+								bzt 'login_recording.jmx'
+							}
 						}
 					}
 				}
