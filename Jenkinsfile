@@ -11,7 +11,7 @@ pipeline {
 			}
 		}
 		stage('test'){
-			steps{
+			node{
 				dir('jmeter/'){	
 					parallel{
 						stage('testing Volumen'){
