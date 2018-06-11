@@ -10,25 +10,22 @@ pipeline {
 				echo 'build'
 			}
 		}
-		stage('test'){
-			parallel{
-				stage('testing Volumen'){
-					steps{
-						bzt 'User_group.jmx'
-					}
-				}
-				stage('testing database'){
-					steps{
-						bzt 'testing_database.jmx'
-					}
-				}
-				stage('testing recording'){
-					steps{
-						bzt 'login_recording.jmx'
-					}
-				}
+		
+		stage('testing Volumen'){
+			steps{
+				bzt 'User_group.jmx'
 			}
-		}	
+		}
+		stage('testing database'){
+			steps{
+				bzt 'testing_database.jmx'
+			}
+		}
+		stage('testing recording'){
+			steps{
+				bzt 'login_recording.jmx'
+			}
+		}
 				
 	}
 	
