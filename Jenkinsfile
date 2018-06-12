@@ -4,35 +4,34 @@ pipeline {
         	HOME="."
         	CI = 'true'
    	} 
-	node{
-		dir('jmeter/'){
-			
-			stages{
-				stage('build'){
-					steps{
-						sh 'pwd'
-						echo 'build'
-					}
-				}
+	dir('jmeter/'){
 
-				stage('testing Volumen'){
-					steps{
-						bzt 'User_group.jmx'
-					}
+		stages{
+			stage('build'){
+				steps{
+					sh 'pwd'
+					echo 'build'
 				}
-				stage('testing database'){
-					steps{
-						bzt 'testing_database.jmx'
-					}
-				}
-				stage('testing recording'){
-					steps{
-						bzt 'login_recording.jmx'
-					}
-				}
-
 			}
+
+			stage('testing Volumen'){
+				steps{
+					bzt 'User_group.jmx'
+				}
+			}
+			stage('testing database'){
+				steps{
+					bzt 'testing_database.jmx'
+				}
+			}
+			stage('testing recording'){
+				steps{
+					bzt 'login_recording.jmx'
+				}
+			}
+
 		}
 	}
+	
 	
 }
